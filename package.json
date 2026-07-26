@@ -1,0 +1,15 @@
+{
+  "name": "rw-owr",
+  "version": "1.0.0",
+  "description": "Cloudflare Workers proxy for scratch-gui sb3 file upload and download",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "preview": "wrangler preview"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}
