@@ -1,9 +1,13 @@
+const REPO_OWNER = 'XiaoXiaoLang';
+const REPO_NAME = 'rw-owr';
+const REPO_BRANCH = 'main';
+
 async function getGitHubToken() {
   return GITHUB_TOKEN;
 }
 
 async function getGitHubApiUrl(path) {
-  const base = `https://api.github.com/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}`;
+  const base = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}`;
   return `${base}${path}`;
 }
 
@@ -103,7 +107,7 @@ async function handleUpload(request) {
   const githubData = {
     message: `Upload project ${fileId}: ${filename}`,
     content: base64Content,
-    branch: GITHUB_BRANCH || 'main',
+    branch: REPO_BRANCH,
   };
 
   try {
@@ -244,7 +248,7 @@ async function handleDeleteProject(request, pathname) {
     const deleteData = {
       message: `Delete project ${fileId}: ${filename}`,
       sha: info.sha,
-      branch: GITHUB_BRANCH || 'main',
+      branch: REPO_BRANCH,
     };
 
     await fetchGitHubApi(`/contents/${filePath}`, {
@@ -327,9 +331,9 @@ export default {
         },
         storage: {
           type: 'GitHub Repository',
-          owner: env.GITHUB_REPO_OWNER || 'Not configured',
-          repo: env.GITHUB_REPO_NAME || 'Not configured',
-          branch: env.GITHUB_BRANCH || 'main',
+          owner: REPO_OWNER,
+          repo: REPO_NAME,
+          branch: REPO_BRANCH,
         },
       }, 200, request);
     }
