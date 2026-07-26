@@ -24,18 +24,24 @@ scratch-gui ←→ Cloudflare Workers（代理加速）←→ 当前 GitHub 仓�
 ### 2. 在 Cloudflare Dashboard 部署
 
 1. 登录 https://dash.cloudflare.com → 进入 **Workers & Pages**
-2. 点击 **创建应用程序** → **创建 Worker**
-3. 输入名称 `rw-owr` → **部署**
-4. 进入 Worker 详情页 → 点击 **设置** → **变量**
+2. 点击 **创建应用程序** → **Pages** → **连接到 Git**
+3. 选择当前仓库 `rw-owr` → **开始设置**
+4. 构建命令填 `npx wrangler deploy`（或不填，留空）
+5. 部署
 
-#### 添加密钥（Secrets）：
+### 3. 配置 Secrets（重要）
 
-| 密钥名 | 值 |
-|--------|-----|
+> ⚠️ Secrets 不能写在 wrangler.toml 中，必须通过 Dashboard 单独设置！
+
+1. 进入 Worker/Pages 详情页 → **设置** → **变量和机密**
+2. 点击 **添加**，选择类型为 **加密**
+3. 添加：
+
+| 名称 | 值 |
+|------|-----|
 | `GITHUB_TOKEN` | 你创建的 Personal Access Token |
 
-5. 点击 **快速编辑**，将 [src/index.js](src/index.js) 的内容粘贴进去
-6. 点击 **部署**
+4. 保存后**重新部署**
 
 ## API 文档
 
