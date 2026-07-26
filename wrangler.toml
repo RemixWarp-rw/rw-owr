@@ -2,9 +2,11 @@ name = "rw-owr"
 main = "src/index.js"
 compatibility_date = "2024-01-01"
 
-kv_namespaces = [
-  { binding = "SB3_STORE", id = "your-kv-namespace-id", preview_id = "your-preview-kv-namespace-id" }
-]
-
 [vars]
 ALLOWED_ORIGINS = "*"
+GITHUB_REPO_OWNER = "your-github-username"
+GITHUB_REPO_NAME = "your-repo-name"
+GITHUB_BRANCH = "main"
+
+[secrets]
+GITHUB_TOKEN = "your-github-personal-access-token"
